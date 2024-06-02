@@ -30,8 +30,14 @@ function App() {
       id: nanoid(),
       text: sasa,
     };
+   
     const newNotes = [...notes, newNote];
-    setNotes(newNotes);
+    if(newNote.text===''){
+      return notes
+    }else{
+      setNotes(newNotes);
+    }
+    
   }
 
   function deleteNote(id) {
@@ -41,19 +47,23 @@ function App() {
   function handleSearchItem(event) {
     setSearchText(event.target.value);
   }
+
 function handleChange(){
   setMode(!mode)
 }
 
+function filter(){
+  notes.filter((note)=>note.text.toLowerCase().includes(searchText))
+}
+
   return (
     <div  className={ ` container ${mode?'dark-mode':''}`}>
-      {/* `container ${mode}?'dark-mode':'null'` */}
       <Header changeMode={handleChange}  />
-      <Search handleSearchNote={handleSearchItem} />
+      <Search handleSearchNote={handleSearchItem} filter={filter}/>
       <NoteList
-        notes={notes.filter((note) =>
-          note.text.toLowerCase().includes(searchText)
-        )}
+       notes={notes.filter((note) =>
+        note.text.toLowerCase().includes(searchText)
+      )}
         handleAddNote={addNote}
         handleDeleteNote={deleteNote}
       />

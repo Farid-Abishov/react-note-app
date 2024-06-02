@@ -27,8 +27,7 @@ code {
 }
 
 .container {
-	max-width: 960px;
-	margin: 10px auto;
+	margin: 0 auto;
   padding: 0 15px;
 	min-height: 100vh;
 }
@@ -86,11 +85,13 @@ textarea:focus {
 	align-items: center;
 	justify-content: space-between;
 }
-
 .delete-icon {
 	cursor: pointer;
 }
 
+.delete-icon:hover{
+  color: red;
+}
 .search {
 	display: flex;
 	align-items: center;

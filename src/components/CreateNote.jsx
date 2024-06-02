@@ -7,10 +7,12 @@ export default function CreateNote({handleAddNote}){
     function handleChange(event){
         setNoteText(event.target.value);
     }
+    
     function handleSave(){
         handleAddNote(noteText);
         setNoteText('');
     }
+
     return <div className="note new">
         <textarea  
         onChange={handleChange}

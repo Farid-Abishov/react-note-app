@@ -53,22 +53,23 @@ function handleChange(){
 }
 
 function filter(){
-  notes.filter((note)=>note.text.toLowerCase().includes(searchText))
+  return notes.filter((note)=>note.text.toLowerCase().includes(searchText))
 }
 
   return (
     <div  className={ ` container ${mode?'dark-mode':''}`}>
       <Header changeMode={handleChange}  />
-      <Search handleSearchNote={handleSearchItem} filter={filter}/>
+      <Search handleSearchNote={handleSearchItem} filterNote={filter}/>
       <NoteList
-       notes={notes.filter((note) =>
-        note.text.toLowerCase().includes(searchText)
-      )}
+       notes={notes}
         handleAddNote={addNote}
         handleDeleteNote={deleteNote}
       />
     </div>
   );
 }
+// {notes.filter((note) =>
+//   note.text.toLowerCase().includes(searchText)
+// )
 
 export default App;
